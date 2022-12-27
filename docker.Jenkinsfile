@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label 'jenkins-docker-slave'}
     stages {
         stage("Run app on Docker"){
             agent{
@@ -9,7 +9,7 @@ pipeline {
             }
             steps{
                 withEnv(["HOME=${env.WORKSPACE}"]) {
-                    sh 'yarn install --production'
+                    sh 'npm install --production'
                 }   
             }
         }
