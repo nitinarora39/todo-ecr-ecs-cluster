@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        ECR_REGISTRY = '123456789.dkr.ecr.us-east-1.amazonaws.com'
-        APP_REPO_NAME = 'devenes/to-do-app'
+        ECR_REGISTRY = '226127612063.dkr.ecr.us-east-1.amazonaws.com/jenkins'
+        APP_REPO_NAME = 'jenkins/to-do-app'
         PATH = "/usr/local/bin/:${env.PATH}"
     }
     stages {
