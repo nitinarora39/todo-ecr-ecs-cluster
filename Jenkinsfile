@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label 'jenkins-docker-slave'}
     environment {
         ECR_REGISTRY = '226127612063.dkr.ecr.us-east-1.amazonaws.com/jenkins'
         APP_REPO_NAME = 'jenkins/to-do-app'
