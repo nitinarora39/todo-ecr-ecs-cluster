@@ -1,7 +1,7 @@
 pipeline {
     agent {label 'jenkins-docker-slave'}
     environment {
-        ECR_REGISTRY = '226127612063.dkr.ecr.us-east-1.amazonaws.com/jenkins/to-do-app'
+        ECR_REGISTRY = '226127612063.dkr.ecr.us-east-1.amazonaws.com'
         APP_REPO_NAME = 'jenkins/to-do-app'
         PATH = "/usr/local/bin/:${env.PATH}"
     }
