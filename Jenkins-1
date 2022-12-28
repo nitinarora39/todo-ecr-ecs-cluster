@@ -28,11 +28,11 @@ pipeline {
         }
         stage('Deploy on Elastic Container Service') {
             steps {
-                 sh 'aws ecs create-cluster --cluster-name to-do-app'
-                 sh 'aws ecs register-task-definition --cli-input-json file://task_definition.json'
-                 sh 'aws ecs list-task-definitions'
-                // sh 'aws ecs update-service --cluster to-do-app --desired-count 1 --service to-do-app-service --task-definition to-do-app --force-new-deployment'
-                 sh 'aws ecs create-service --cluster to-do-app --service-name to-do-app-service --task-definition to-do-app --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-096fbbb07ea94167a],securityGroups=[sg-092e1df1dcb09964a],assignPublicIp=ENABLED}"'
+                 // sh 'aws ecs create-cluster --cluster-name to-do-app'
+                 // sh 'aws ecs register-task-definition --cli-input-json file://task_definition.json'
+                 // sh 'aws ecs list-task-definitions'
+                 sh 'aws ecs update-service --cluster to-do-app --desired-count 1 --service to-do-app-service --task-definition to-do-app --force-new-deployment'
+                 // sh 'aws ecs create-service --cluster to-do-app --service-name to-do-app-service --task-definition to-do-app --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-096fbbb07ea94167a],securityGroups=[sg-092e1df1dcb09964a],assignPublicIp=ENABLED}"'
                 
             }
         }
