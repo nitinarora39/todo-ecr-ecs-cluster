@@ -1,0 +1,22 @@
+---
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      #- $(aws ecr get-login --no-include-email --region us-east-1)
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 226127612063.dkr.ecr.us-east-1.amazonaws.com/jenkins
+  build:
+    commands:
+      - "echo Build started on `date`"
+      - "echo Building the Docker image..."
+      - "docker build -t todoappnode ."
+      - "docker tag jenkins:todoapp 226127612063.dkr.ecr.us-east-1.amazonaws.com/jenkins:todoapp"
+  post_build:
+    commands:
+      - "echo Build completed on `date`"
+      - "echo Pushing the Docker image..."
+      - "docker push 226127612063.dkr.ecr.us-east-1.amazonaws.com/jenkins:todoapp"
+      - printf '[{"name":"rakeshcontainer","imageUri":"%s"}]' 226127612063.dkr.ecr.us-east-1.amazonaws.com/jenkins:todoapp > imagedefinitions.json
+artifacts:
+  files: imagedefinitions.json
