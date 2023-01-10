@@ -17,6 +17,6 @@ phases:
       - "echo Build completed on `date`"
       - "echo Pushing the Docker image..."
       - "docker push 226127612063.dkr.ecr.us-east-1.amazonaws.com/jenkins:todoapp"
-      - printf '[{"name":"rakeshcontainer","imageUri":"%s"}]' 226127612063.dkr.ecr.us-east-1.amazonaws.com/jenkins:todoapp > imagedefinitions.json
+      - printf '[{"name":"nodecontainer","imageUri":"%s"}]' 226127612063.dkr.ecr.us-east-1.amazonaws.com/jenkins:todoapp > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
